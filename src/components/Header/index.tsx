@@ -1,20 +1,27 @@
+import { HeaderButton, HeaderButtonsContainer, HeaderContainer } from './styles'
+
+import coffeeLogo from '../../assets/Logo.png'
 import { MapPin, ShoppingCart } from 'phosphor-react'
-import logo from '../../assets/Logo.png'
-import { ActionsDiv, NavBar } from './styles'
+import { NavLink } from 'react-router-dom'
 
 export function Header() {
   return (
-    <NavBar>
-      <img src={logo} alt="Coffee Delivery Logo" />
-      <ActionsDiv>
-        <div className="location">
-          <MapPin size={24} weight="fill" />
-          Sao Paulo, SP
-        </div>
-        <button className="cart">
-          <ShoppingCart size={24} weight="fill" />
-        </button>
-      </ActionsDiv>
-    </NavBar>
+    <HeaderContainer>
+      <div className="container">
+        <NavLink to="/">
+          <img src={coffeeLogo} alt="" />
+        </NavLink>
+
+        <HeaderButtonsContainer>
+          <HeaderButton variant="purple">
+            <MapPin size={20} weight="fill" />
+            São Paulo, SP
+          </HeaderButton>
+          <HeaderButton variant="yellow">
+            <ShoppingCart size={20} weight="fill" />
+          </HeaderButton>
+        </HeaderButtonsContainer>
+      </div>
+    </HeaderContainer>
   )
 }
