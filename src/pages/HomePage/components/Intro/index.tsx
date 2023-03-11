@@ -6,7 +6,7 @@ import {
 } from './styles'
 import introImg from '../../../../assets/intro.png'
 import { RegularText } from '../../../../components/Typography'
-import { InfoWIthIcon } from '../../../../components/InfoWIthIcon'
+import { InfoWIthIcon } from '../../../../components/InfoWithIcon'
 import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react'
 import { useTheme } from 'styled-components'
 

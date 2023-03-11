@@ -7,7 +7,7 @@ interface ItemWithIconProps {
   iconBackground: string
 }
 
-export function InfoWIthIcon({
+export function InfoWithIcon({
   icon,
   text,
   iconBackground,
