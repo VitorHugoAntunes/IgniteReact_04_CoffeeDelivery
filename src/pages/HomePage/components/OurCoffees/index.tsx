@@ -1,5 +1,6 @@
 import { TitleText } from '../../../../components/Typography'
 import { coffees } from '../../../../data/coffees'
+import { useCart } from '../../../../hooks/useCart'
 import { CoffeeCard } from '../CoffeeCard'
 import { CoffeeList, OurCoffeesContainer } from './styles'
 
