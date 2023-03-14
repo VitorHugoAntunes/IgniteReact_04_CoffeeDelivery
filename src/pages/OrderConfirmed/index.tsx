@@ -5,9 +5,31 @@ import confirmedOrderIllustration from '../../assets/confirmed-order-illustratio
 import { InfoWithIcon } from '../../components/InfoWithIcon'
 import { Clock, CurrencyDollar, MapPin } from 'phosphor-react'
 import { useTheme } from 'styled-components'
+import { OrderData } from '../CompleteOrder'
+import { useLocation, useNavigate } from 'react-router-dom'
+import { paymentMethods } from '../CompleteOrder/components/CompleteOrderForm/PaymentMethodOptions'
+import { useEffect } from 'react'
+import { GoBackShopping } from '../../components/GoBackShopping'
+
+interface LocationType {
+  state: OrderData
+}
 
 export function OrderConfirmedPage() {
   const { colors } = useTheme()
+
+  const { state } = useLocation() as LocationType
+
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (!state) {
+      navigate('/')
+    }
+  }, [state, navigate])
+
+  if (!state) return <></>
+
   return (
     <OrderConfirmedContainer className="container">
       <div>
@@ -24,9 +46,13 @@ export function OrderConfirmedPage() {
             iconBackground={colors['brand-purple']}
             text={
               <RegularText>
-                Entrega em <strong>Rua João Daniel Martinelli, 102</strong>
+                Entrega em{' '}
+                <strong>
+                  {state.street}, {state.number}{' '}
+                  {state.complement && <span>- {state.complement}</span>}
+                </strong>
                 <br />
-                Zaíra - Mauá, SP
+                {state.district} - {state.city}, {state.state}
               </RegularText>
             }
           />
@@ -42,16 +68,18 @@ export function OrderConfirmedPage() {
             }
           />
           <InfoWithIcon
-            icon={<CurrencyDollar weight="fill" />}
+            icon={paymentMethods[state.paymentMethod].icon}
             iconBackground={colors['brand-yellow-dark']}
             text={
               <RegularText>
                 Pagamento na entrega
                 <br />
-                <strong>Cartão de Crédito</strong>
+                <strong>{paymentMethods[state.paymentMethod].label}</strong>
               </RegularText>
             }
           />
+
+          <GoBackShopping className="margin" />
         </OrderDetailsContainer>
         <img src={confirmedOrderIllustration} alt="Confirmed order" />
       </section>

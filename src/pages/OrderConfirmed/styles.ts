@@ -26,6 +26,10 @@ export const OrderDetailsContainer = styled.div`
   gap: 2rem;
   position: relative;
 
+  > div.margin {
+    margin-top: 0;
+  }
+
   &::before {
     content: '';
     position: absolute;

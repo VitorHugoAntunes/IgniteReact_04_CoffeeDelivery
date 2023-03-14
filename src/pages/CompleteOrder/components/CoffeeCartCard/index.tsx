@@ -50,7 +50,7 @@ export function CoffeeCartCard({ coffee }: CoffeeCartCardProps) {
         </div>
       </div>
 
-      <p>{formattedPrice}</p>
+      <p>R$ {formattedPrice}</p>
     </CoffeeCartCardContainer>
   )
 }
